@@ -5,6 +5,9 @@ I added content in the html giving it a shape. Used Css and its properties to gi
 In jvascript file first got current date, then selected multiple html elements. Created a fetch statment for first url used the data tp get latitude longitude and cuty name along iwht wind speed temperature and humidity for the current day. Used selected html elemnts and used text content to add content to feilds in the html. Used the data from first server and passed it into second server for requred paramters to get data. Used a fetch statament to get forecast for next 5 days used text content to populate the required html feilds.
 Created an array that will store all the searches done by the user.Then a created a function with a for loop that will iterate and display each search as a button. Crerated another function that will get value of current clicked button by using Event.
 
+Deployment Link : https://mshehroz237.github.io/weather-dashboard/
+github repo : https://github.com/mshehroz237/weather-dashboard
+
 
 Below are detailed images of the code
 <img width="1440" alt="Screen Shot 2022-05-31 at 12 19 10 AM" src="https://user-images.githubusercontent.com/97645096/171092151-6f779884-7d67-4d9d-9161-2b05c361130c.png">
