@@ -13,7 +13,7 @@ var windEl = document.querySelector("#wind");
 //selecting uv-index in html
 var uvEl = document.querySelector("#uv-index");
 //selecting a div with recent searched
-var cityEl = document.querySelector("#mylist");
+var cityEl = document.querySelector("#myList");
 //selecting temperatures and humidity in cards
 var day1TempEl = document.getElementById('day1temp');
 var day1HumidEl = document.getElementById('day1humid');
@@ -116,32 +116,25 @@ searchBtn.addEventListener("click", function () {
     //pushing the user response into an array
     cityArray.push(city);
     //calling recentSearch function
-    recentSearch();
+    recentSearch(city);
+    //getting local storage 
+    cityEl = localStorage.getItem("savedCity");
+    //setting up local storage 
+    localStorage.setItem("savedCity", cityArray);
 })
-
-var recentSearch = function () {
-    //created a for loop that will run until the conditon statment is false
-    for (var i = 0; i < cityArray.length; i++) {
-        //calling localtrorage and setting it into cityEl
-        cityEl = localStorage.getItem("savedCity");
-        //setting up local storage 
-        localStorage.setItem("savedCity", cityArray);
-        //creating a key which will then loop through all of localstorage indexes
-        key = localStorage.key(i);
-        //adding searches to myList in the html
-        document.getElementById("myList").innerHTML = " <button class=\"searchButtons\">" + localStorage.getItem(key) + "</button>";
-    }
-    //adding an event listener in the cityEl list adding click which will fucntion on event
-    cityEl.addEventListener("click", function(e){
-        //once an event occurs check to see we not getting parent div
-        if(e.target !== e.currentTarget){
-            //storing value of clock button into clicked item
-            var clickedItem = e.target.value;
-            //calling weather function with new paramter
-            weather(clickedItem);
-        }
-        // telling it to stop looking
-        e.stopPropagation();
-
+//creating a function and passing a cityvalue
+var recentSearch = function (cityvalue) {
+    //creating a button and storing it in city button
+    var cityButton = document.createElement("button");
+    //getting text content of the button
+    cityButton.textContent = cityvalue;
+    //calling an event listener on each button
+    cityButton.addEventListener("click", function(e){
+        //getting text
+        var clickedItem = e.target.textContent;
+        //calling weather function with new text
+        weather(clickedItem);
     })
+    cityEl.appendChild(cityButton);
 }
+
